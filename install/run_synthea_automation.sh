@@ -18,5 +18,3 @@ docker cp synthea:/synthea/synthea/output/fhir /home/"$user"/Desktop/VISTA-EHR-S
 echo "Uploading Synthetic patients into VISTA-EHR system..."
 cd /home/alexis/Desktop/VISTA-EHR-Synthea-patient-automation
 node index.js
-
-
