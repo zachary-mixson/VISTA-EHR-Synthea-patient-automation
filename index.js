@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const directoryPath = './json/fhir';
-const url = 'edu2.opensourcevista.net:9290/addpatient?load1/';
+const url = 'http://edu2.opensourcevista.net:9290/addpatient?load=1&debug=1';
 
 fs.readdirSync(directoryPath).forEach(file => {
     if (path.extname(file) === '.json') {

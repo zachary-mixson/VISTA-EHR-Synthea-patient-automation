@@ -6,15 +6,20 @@ user=$(whoami)
 echo "Starting Synthea Docker container..."
 sudo docker start synthea
 
-# Generate Synthea patients
+# Remove Synthea patients
+echo "Deleting previously generated Synthea patients..."
+sudo docker exec -it synthea bash -c "cd /synthea/synthea && rm -r output -f"
+
+# Generate new Synthea patients
 echo "Generating Synthea patients in FHIR format..."
 read -p "Enter desired population value: " population
 sudo docker exec -it synthea bash -c "cd synthea/ && ./run_synthea -p ${population}"
 
-# Copy Synthea patient data to project json directory
+# Copy Synthea patient records to project json directory
 echo "Copying Synthea patients to json directory..."
 docker cp synthea:/synthea/synthea/output/fhir /home/"$user"/Desktop/VISTA-EHR-Synthea-patient-automation/json
 
+# Upload synthetic patient records to server
 echo "Uploading Synthetic patients into VISTA-EHR system..."
-cd /home/alexis/Desktop/VISTA-EHR-Synthea-patient-automation
+cd /home/"$user"/Desktop/VISTA-EHR-Synthea-patient-automation
 node index.js
