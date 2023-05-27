@@ -1,0 +1,9 @@
+version: '3.2'
+
+services:
+  synthea:
+    image: amlopez5841/synthea:latest
+    container_name: synthea
+    restart: always
+    stdin_open: true
+    tty: true

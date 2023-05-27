@@ -2,8 +2,8 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-const directoryPath = './json';
-const url = 'http://localhost:3000/data';
+const directoryPath = './json/fhir';
+const url = 'http://edu2.opensourcevista.net:9290/addpatient?load=1&debug=1';
 
 fs.readdirSync(directoryPath).forEach(file => {
     if (path.extname(file) === '.json') {
