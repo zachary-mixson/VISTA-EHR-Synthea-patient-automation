@@ -8,7 +8,8 @@ sudo docker start synthea
 
 # Remove Synthea patients
 echo "Deleting previously generated Synthea patients..."
-sudo docker exec -it synthea bash -c "cd /synthea/synthea && rm -r output -f"
+sudo docker exec -it synthea bash -c "rm -rf /synthea/synthea/output/*"
+rm -rf /home/alexis/Desktop/VISTA-EHR-Synthea-patient-automation/json/fhir
 
 # Generate new Synthea patients
 echo "Generating Synthea patients in FHIR format..."
